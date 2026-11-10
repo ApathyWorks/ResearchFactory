@@ -14,6 +14,38 @@
 | Last review date | [YYYY-MM-DD] |
 | Matrix owner | Coordinating agent (human approval required for the paper) |
 
+## Candidate-screening ledger
+
+The coordinator alone maintains this ledger. Retain one row per candidate ID
+from researcher reports, including rejected and duplicate records. Revising a
+candidate does not create a new candidate ID. Template examples are not data.
+
+| Candidate ID | Canonical publication identity (DOI, URL, bibliographic metadata) | Deduplication status | Duplicate of (candidate or existing source ID) | Screening decision | Reason / unresolved question | Research report link | Permanent source ID when assigned |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+
+Deduplication statuses: UNIQUE, DUPLICATE, UNRESOLVED. Match DOI first, then
+canonical URL and bibliographic metadata. For duplicates, point to one
+representative candidate or an existing source ID; keep all original report
+links and candidate IDs. Ambiguous matches remain UNRESOLVED and must not
+receive new permanent IDs or be silently counted as unique publications.
+
+Screening decisions: PENDING, ACCEPTED, REJECTED. Record a reason for every
+decision. Screening and deduplication are separate: several candidate records
+can refer to one accepted publication, which counts only once. Count raw
+discoveries by distinct candidate IDs, confirmed unique discoveries by resolved
+publication groups, and unresolved matches separately.
+
+Use UNASSIGNED when no permanent source ID has been allocated. Rejected
+candidates remain traceable here without receiving new permanent IDs. If a
+publication already has a permanent ID, retain it even if later rejected;
+never recycle or renumber it. For accepted publications, the coordinator
+assigns or reuses IDs under AGENTS.md and records the mapping here and in
+delegation handoffs without editing researcher reports.
+
+Record screening changes and their reasons in the review and change log below.
+The coordinator preserves measurement snapshots before changes so historical
+screening totals remain traceable in workflow-metrics.md.
+
 ## 1. Source register
 
 Add one row per unique publication. **Source IDs are permanent** once assigned. A DOI is preferred but may be unavailable for some legitimate sources. `FULL_TEXT` refers to permitted, accessible full text—not merely a publisher abstract.

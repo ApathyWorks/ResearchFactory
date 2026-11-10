@@ -83,6 +83,31 @@ A complete academic research paper containing:
 6. Conclusion
 7. References
 
+## Workflow Measurement Deliverable
+
+Provide workflow-metrics.md as a separate demonstration deliverable, outside
+the manuscript's 1,200-word target. The coordinator alone maintains it using
+the measurement contract in AGENTS.md. Create it alongside workflow-log.md
+when research begins; do not create populated run records during setup.
+
+Include run details, metric definitions and current values, supporting
+artifact links, append-only historical snapshots, and missing measurements.
+Measure raw and deduplicated discoveries, accepted sources, sources with
+verified full-text evidence, extracted claims, initial and current verification
+outcomes, corrected and resolved claims, citation issues by severity and cycle,
+review iterations, explicit human interventions, and elapsed execution time
+with recorded human-wait intervals reported separately.
+
+Update measurements at specialist handoffs and phase boundaries. Preserve
+initial outcomes before reports are updated, with claim/issue IDs and version
+references. Use NOT_RECORDED for unavailable data and zero only for observed
+zero. Do not interpret verification failures as automatically proving
+hallucinations or label elapsed time excluding human waits as compute time.
+
+Use the evidence matrix for source screening and evidence status, specialist
+reports for detailed findings, and workflow-log.md for observed events and
+human decisions. Metrics do not replace these authoritative records.
+
 ## AI Usage
 
 This paper is an explicitly AI-generated demonstration

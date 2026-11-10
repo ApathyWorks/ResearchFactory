@@ -95,6 +95,57 @@ than inventing history.
 
 ---
 
+## Demonstration Workflow Measurements
+
+The coordinator alone owns workflow-metrics.md inside the assigned paper
+directory. Create it alongside workflow-log.md when research begins, not
+during configuration maintenance. Use Markdown and existing specialist
+handoffs; no additional agent is required. The evidence matrix remains
+authoritative for evidence, and the workflow log for observed events.
+
+Include these sections in workflow-metrics.md:
+
+1. Run details: run ID, paper directory, current phase, manuscript version
+   when available, and timezone-qualified start/end timestamps.
+2. Current measurements: Metric | Counting rule | Value | Last updated |
+   Supporting artifact links. Include all measurements defined below.
+3. Append-only historical snapshots: snapshot ID, timestamp, phase or
+   review cycle, manuscript/report version, counts, affected candidate,
+   claim or issue IDs, and supporting artifact/log links.
+4. Missing measurements and limitations, including incomplete timing data.
+
+| Measurement | Counting rule |
+| --- | --- |
+| Sources discovered | Count distinct candidate IDs as raw records, and confirmed unique publications separately after deduplication. Report unresolved duplicate matches separately; do not silently count them as new unique publications. |
+| Sources accepted | Count unique publications passing screening, using the candidate-screening ledger in the evidence matrix. Duplicate records do not increase this count. |
+| Sources with verified evidence | Count distinct permanent source IDs with inspected full text and at least one VERIFIED claim. |
+| Claims extracted | Count distinct source-ID/local-claim-ID pairs from completed summaries, expressed as global claim IDs for measurement. Corrections retain IDs and do not increase the count; this counting step does not verify claims. |
+| Verification outcomes | Preserve each claim's initial assessment and report current counts of VERIFIED, PARTIALLY_SUPPORTED, UNSUPPORTED, and UNVERIFIABLE. Report PENDING_VERIFICATION separately so unassessed claims are not omitted. |
+| Claims corrected and resolved | Separately count distinct claims corrected after verification feedback and initially nonverified claims subsequently VERIFIED. Repeated corrections to one claim count once; preserve transitions in snapshots. |
+| Citation problems | Count issues by severity and audit cycle, referencing audit IDs and manuscript version. Distinguish new from repeated issues using explicit mappings; never sum cycle totals as unique problems. |
+| Review iterations | Record the initial review separately from revision-review cycles. Record cycle start and completion; completion requires both reviews and any pending audit-dependency follow-up. An unchanged-draft follow-up does not increment the cycle count. |
+| Human interventions | Count explicit decision-bearing human responses, linked to log entries and categorized as approval, clarification, access assistance, or revision direction. Count each response once in the total even if it has multiple categories. Requests and ordinary chat messages are not approvals or decisions. |
+| Execution time | Record timezone-qualified start/end and elapsed wall-clock time. Record human-wait interval boundaries and subtract their union only when complete. Label the result elapsed time excluding human waits, never compute time; do not sum parallel agent durations as wall-clock runtime. |
+
+Update measurements at specialist handoffs and phase boundaries, including
+screening, initial verification, each verification retry, and each review
+cycle. Record human decisions and wait boundaries when observed. Human-wait
+intervals cover periods when workflow progress is paused awaiting a response,
+not periods when independent work continues. For an ongoing run, label elapsed
+time as measured through a specified timestamp rather than inventing an end.
+
+Capture initial verification and review snapshots before assigning work that
+updates the underlying reports. Preserve IDs, statuses/severities and counts
+needed to reconstruct earlier outcomes; links to mutable reports alone are
+insufficient. Append corrections referencing the affected snapshot, preserving
+earlier entries and human edits. Current measurements may be refreshed from
+the recorded history, but never overwrite historical snapshots.
+
+Use NOT_RECORDED for unavailable measurements and zero only for observed zero.
+Do not infer missing history or approvals. Verification failures, particularly
+UNVERIFIABLE claims, do not automatically establish hallucinations. Existing
+verification retry limits, revision-review limits and approval gates still apply.
+
 ## Phase 1: Research
 
 1. Read assignment.md and identify:
@@ -118,6 +169,10 @@ than inventing history.
    across research reports and against the existing source register, using
    DOI first, then canonical URL and bibliographic metadata. Ambiguous
    matches remain unresolved until clarified; do not assign them new IDs.
+   Preserve every candidate in the evidence matrix's candidate-screening
+   ledger with canonical identity, duplicate mappings, screening decision,
+   reason, report link, and permanent source ID when assigned. Retain rejected
+   candidates under their candidate IDs without allocating permanent IDs.
 
 7. The coordinator alone assigns permanent source IDs. Reuse the existing
    ID for a matching publication. For new publications, assign IDs
@@ -314,6 +369,7 @@ Report:
 - Evidence gaps and limitations
 - Completed research artifacts
 - Workflow log path and unresolved logging gaps
+- Workflow metrics path, measured outcomes, and missing measurements
 - Citation audit outcome
 - Peer review outcome
 - Outstanding human decisions
