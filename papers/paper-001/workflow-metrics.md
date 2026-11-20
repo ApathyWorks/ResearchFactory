@@ -297,3 +297,15 @@ Message arrival timestamp is NOT_RECORDED; authorization timestamp is the coordi
 Raw search-hit totals and pre-registration exclusions are NOT_RECORDED; discovery counts cover catalogued candidate records only. Historical handoff snapshots were compiled from the stable reports and explicit completion handoffs during integration; they are not independent clock measurements of each agent. DOI verification is publisher-metadata checking, not a separate Crossref audit. Source-name variants and the missing conference DOI are bibliographic issues, not citation-audit findings.
 
 Workspace credits interrupted verification after the three initial summaries. The exact interruption start and duration were not logged. Infrastructure downtime is not classified as an approval wait and cannot be subtracted precisely from elapsed runtime.
+
+## Post-completion export snapshot EXPORT-001
+
+Recorded: 2026-11-20T15:25:29Z. This addendum does not reopen or alter the completed research run.
+
+- Artifacts: [DOCX](final/paper-001.docx), [PDF](final/paper-001.pdf), [summarizer abstract](final/abstract.md).
+- Two output formats; 10 pages each; abstract 181 words; approved manuscript body 1,201 words; nine references.
+- Post-completion human decisions: 2 (export direction, title-page placeholder clarification), linked to the export entry in [workflow-log.md](workflow-log.md). Original run decision total preserved.
+- New research claims: 0; additional scientific review cycles: 0. Abstract is a synopsis of approved material, not a new evidence record.
+- Export start, elapsed time and human-wait interval measurements: NOT_RECORDED. Completion observed at the timestamp above.
+- Quality checks: original manuscript SHA256 unchanged; all prose/reference paragraphs present in both exports; all rendered pages inspected. Missing identity/course details intentionally represented by user-requested placeholders.
+
